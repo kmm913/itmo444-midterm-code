@@ -117,18 +117,16 @@ function AddMidtermData($connection, $email, $phone) {
    $n = mysqli_real_escape_string($connection, $email);
    $a = mysqli_real_escape_string($connection, $phone);
 
-   $query = "INSERT INTO EMPLOYEES (NAME, ADDRESS) VALUES ('$n', '$a');";
+   $query = "INSERT INTO midtermData (email, phone) VALUES ('$n', '$a');";
 
-   if(!mysqli_query($connection, $query)) echo("<p>Error adding employee data.</p>");
+   if(!mysqli_query($connection, $query)) echo("<p>Error adding midterm data.</p>");
 }
 
 /* Check whether the table exists and, if not, create it. */
 function VerifyMidtermDataTable($connection, $dbName) {
   if(!TableExists("midtermData", $connection, $dbName))
   {
-     $query = "CREATE DATABASE midterm;
-     USE midterm;
-     CREATE TABLE midtermData 
+     $query = "CREATE TABLE midtermData 
      (id int not null auto_increment, 
      email varchar(200) not null, 
      phone varchar(20) not null, 
